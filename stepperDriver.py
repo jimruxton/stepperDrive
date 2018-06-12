@@ -9,6 +9,7 @@ SPR = 5373   # Steps per Revolution (360 / .067)
 
 GPIO.setmode(GPIO.BCM)
 #GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+# testing GIT
 GPIO.setup(DIR, GPIO.OUT)
 GPIO.setup(STEP, GPIO.OUT)
 GPIO.output(DIR, CW)
