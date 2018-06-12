@@ -5,9 +5,10 @@ DIR = 20   # Direction GPIO Pin
 STEP = 21  # Step GPIO Pin
 CW = 1     # Clockwise Rotation
 CCW = 0    # Counterclockwise Rotation
-SPR = 48   # Steps per Revolution (360 / 7.5)
+SPR = 5373   # Steps per Revolution (360 / .067)
 
 GPIO.setmode(GPIO.BCM)
+#GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(DIR, GPIO.OUT)
 GPIO.setup(STEP, GPIO.OUT)
 GPIO.output(DIR, CW)
