@@ -24,5 +24,9 @@ remove the line: console=serial0,115200 and save and reboot for changes to take 
 At this point I was able to get serial data from ultrasonic sensor on GPIO 15 using 
 minicom -b 9600 -o -D /dev/ttyS0
 
-These instruction use miniuart for GPIO 14,15 to disable bluetooth and use hardware serial port see instructions at URL above
+Going one step further move Bluetooth to miniuart and use GPIO 15 on hardware serial by adding:
+dtoverlay=pi3-miniuart-bt
+to bottom of /boot/config.txt and rebooting .
+Now GPIO 15 is on /dev/AMA0 which is hardware serial port . Use putty to see the data or mincom.
+
 
