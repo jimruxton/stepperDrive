@@ -1,6 +1,4 @@
-***************************************************************************
-First, the Python module that does the actual work:
-***************************************************************************
+
 
 #!/usr/bin/python3
 # Filename: maxSonarTTY.py
@@ -14,10 +12,10 @@ from time import time
 from serial import Serial
 
 serialDevice = "/dev/ttyAMA0" # default for RaspberryPi
-maxwait = 3 # seconds to try for a good reading before quitting
+maxwait = 5 # seconds to try for a good reading before quitting
 
 def measure(portName):
-    ser = Serial(portName, 9600, 8, 'N', 1, timeout=1)
+    ser = Serial(portName, 9600, 8, 'N', 1, timeout=3)
     timeStart = time()
     valueCount = 0
 
