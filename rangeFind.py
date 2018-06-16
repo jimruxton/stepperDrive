@@ -2,13 +2,14 @@
 # Filename: rangeFind.py
 
 # sample script to read range values from Maxbotix ultrasonic rangefinder
+# note only worked with hardware uart on PI3 so be sure to configure it properly
 
 from time import sleep
 import maxSonarTTY
 
 serialPort = "/dev/ttyAMA0"
 maxRange = 5000  # change for 5m vs 10m sensor
-sleepTime = 5
+sleepTime = 1 # time between measurements
 minMM = 9999
 maxMM = 0
 
