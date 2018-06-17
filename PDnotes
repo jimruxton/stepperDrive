@@ -1,0 +1,2 @@
+Got WiringPi_gpio external working  (need to run PD with gksudo)
+Got comport working. Use /dev/AMA0 . patch in Documents/Pd , haven't tried using Pd to drive stepper using wiringPi yet?
