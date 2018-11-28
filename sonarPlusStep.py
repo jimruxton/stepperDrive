@@ -20,11 +20,13 @@ GPIO.setmode(GPIO.BCM)
 # testing GIT
 GPIO.setup(DIR, GPIO.OUT)
 GPIO.setup(STEP, GPIO.OUT)
-GPIO.output(DIR, CW)
+GPIO.output(DIR, CCW)
 
 step_count = SPR
 #delay = .001
-delay = .0000001
+#delay = .0000001
+delay = .001
+
 while True:
     mm = maxSonarTTY.measure(serialPort)
     if mm >= maxRange:
@@ -38,7 +40,7 @@ while True:
     print("distance:", mm, "  min:", minMM, "max:", maxMM)
     if mm < 500:
         for y in range(cycles):
-            GPIO.output(DIR, CW)
+            GPIO.output(DIR, CCW)
             for x in range(step_count):
                 GPIO.output(STEP, GPIO.HIGH)
                 sleep(delay)
