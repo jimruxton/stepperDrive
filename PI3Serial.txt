@@ -1,5 +1,9 @@
-https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/
+﻿https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/
 
+If using maxbotics sonar be sure to solder jumper if necessary
+Add following to /boot/config.txt if we want shutdown button
+dtoverlay=gpio-shutdown
+****
 	
 $ sudo nano /boot/config.txt
 
@@ -19,7 +23,14 @@ you will see something like:
 	
 dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes root wait
 
-remove the line: console=serial0,115200 and save and reboot for changes to take effect.
+remove the line: console=serial0,115200 
+change to this:
+
+dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p7 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait splash plymouth.ignore-serial-consoles quiet
+enable_uart=1 quiet
+dtoverlay=pi3-miniuart-bt quiet
+
+and save and reboot for changes to take effect.
 
 At this point I was able to get serial data from ultrasonic sensor on GPIO 15 using 
 minicom -b 9600 -o -D /dev/ttyS0
