@@ -13,7 +13,7 @@ STEP = 21  # Step GPIO Pin
 CW = 0    # Clockwise Rotation
 CCW = 1    # Counterclockwise Rotation
 SPR = 5373*2   # Steps per Revolution (360 / .067)
-cycles=5
+cycles=30
 
 GPIO.setmode(GPIO.BCM)
 #GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -25,7 +25,7 @@ GPIO.output(DIR, CCW)
 step_count = SPR
 #delay = .001
 #delay = .0000001
-delay = .001
+delay = .00005
 
 while True:
     mm = maxSonarTTY.measure(serialPort)
@@ -38,7 +38,7 @@ while True:
     if mm > maxMM:
         maxMM = mm
     print("distance:", mm, "  min:", minMM, "max:", maxMM)
-    if mm < 500:
+    if mm < 1500:
         for y in range(cycles):
             GPIO.output(DIR, CCW)
             for x in range(step_count):
